@@ -81,9 +81,11 @@ export class DatePick extends Component {
     return ms === selectedDate;
   }
 
-  selectDate = ms => () => this.setState({
-    selectedDate: ms
-  });
+  selectDate = ms => () => {
+    const { changeDate } = this.props;
+    this.setState({ selectedDate: ms });
+    changeDate(ms);
+  };
 
   changeDate = i => {
     const { days } = this.state;

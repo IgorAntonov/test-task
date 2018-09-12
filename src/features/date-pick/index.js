@@ -1,1 +1,1 @@
-export { DatePick } from './date-pick';
+export { DatePickContainer as DatePick } from './container';
