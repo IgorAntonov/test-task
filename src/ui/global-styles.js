@@ -5,7 +5,9 @@ injectGlobal`
 html, body {
   font-size: 16px;
   background-color: #fafafa;
-}
-* { box-sizing: border-box }
-a { text-decoration: none }
+};
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+};
 `;
