@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { formatToISO } from 'Src/lib/date-functions';
+import { WeatherItem } from './weather-item';
 import { Wrapper, Header, List } from './style';
 
 const intervals = [
@@ -46,9 +47,11 @@ export class WeatherList extends Component {
         </Header>
         <List>
           {intervals.map((interval, i) => (
-            <div>
-              {interval} {this.getDayIntervalTime(initialTime, i)}
-            </div>
+            <WeatherItem
+              interval={interval}
+              date={this.getDayIntervalTime(initialTime, i)}
+              key={interval}
+            />
           ))}
         </List>
       </Wrapper>
