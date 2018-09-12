@@ -10,7 +10,8 @@ import {
 export class DatePick extends Component {
   state = {
     days: [],
-    selectedDate: null
+    selectedDate: null,
+    selectedMonth: null
   };
 
   componentDidMount() {
@@ -27,9 +28,11 @@ export class DatePick extends Component {
         ms
       };
     });
+    const month = new Date(currentDate).toLocaleString('ru', { month: 'long' });
     this.setState({
       days,
-      selectedDate: currentDate
+      selectedDate: currentDate,
+      selectedMonth: month
     });
   }
 
@@ -82,8 +85,14 @@ export class DatePick extends Component {
     selectedDate: ms
   });
 
-  render() {
+  changeDate = i => {
     const { days } = this.state;
+    const month = new Date(days[i].ms).toLocaleString('ru', { month: 'long' });
+    this.setState({ selectedMonth: month });
+  }
+
+  render() {
+    const { days, selectedMonth } = this.state;
     const settings = {
       infinite: false,
       initialSlide: 13,
@@ -94,6 +103,9 @@ export class DatePick extends Component {
       arrows: false,
       afterChange: index => {
         this.loadNewDates(index);
+      },
+      beforeChange: (oldI, newI) => {
+        this.changeDate(newI);
       }
     };
     return (
@@ -101,7 +113,7 @@ export class DatePick extends Component {
         <MonthHeader>
           <CalendarIcon />
           <Month>
-            АПРЕЛЬ
+            {selectedMonth}
           </Month>
         </MonthHeader>
         <ScrollWrapper>
