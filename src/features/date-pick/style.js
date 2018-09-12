@@ -1,9 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { media } from 'Src/ui';
+
 export const Wrapper = styled.section`
   padding: 1rem;
-  width: 50%;
+  width: 100%;
+  ${media.mobile`
+    width: 90%;
+  `}
+  ${media.tablet`
+    width: 70%;
+  `}
+  ${media.desktop`
+    width: 50%;
+  `}
+  
 `;
 
 export const MonthHeader = styled.div`

@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { media } from 'Src/ui';
+
 export const Wrapper = styled.header`
   display: flex;
   flex-direction: column;
@@ -14,7 +16,10 @@ export const Main = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40%;
+  width: 100%;
+  ${media.mobile`
+    width: 50%;
+  `}
   min-height: 3rem;
 `;
 

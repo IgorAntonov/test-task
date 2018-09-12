@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { media } from 'Src/ui';
+
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -15,6 +17,7 @@ export const Flex = styled.div`
 `;
 
 export const Time = styled.div`
+  flex: 1;
   font-size: 1.4rem;
   font-weight: bold;
   font-family: sans-serif;
@@ -38,10 +41,18 @@ export const Info = styled.div`
 `;
 
 export const NoForecast = styled.div`
+  text-align: right;
+  flex: 1;
   padding: 0.7rem 0;
 
-  font-size: 1.1rem;
   font-family: sans-serif;
   color: #666;
   cursor: default;
+
+  font-size: 0.9rem;
+  text-align: right;
+  ${media.mobile`
+    font-size: 1.1rem;
+    flex: 2;
+  `}
 `;

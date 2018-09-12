@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { media } from 'Src/ui';
+
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -36,4 +38,8 @@ export const Date = styled.p`
 
 export const DummyData = styled.p`
   margin: 0;
+  font-size: 0.8rem;
+  ${media.mobile`
+    font-size: 1rem;
+  `}
 `;
