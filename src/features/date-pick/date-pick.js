@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick';
 
+import { DateItem } from './date-item';
 import {
   Wrapper, MonthHeader, CalendarIcon,
   Month, ScrollWrapper
@@ -8,7 +9,8 @@ import {
 
 export class DatePick extends Component {
   state = {
-    days: []
+    days: [],
+    selectedDate: null
   };
 
   componentDidMount() {
@@ -25,7 +27,10 @@ export class DatePick extends Component {
         ms
       };
     });
-    this.setState({ days });
+    this.setState({
+      days,
+      selectedDate: currentDate
+    });
   }
 
   loadNewDates = index => {
@@ -68,6 +73,15 @@ export class DatePick extends Component {
     }
   }
 
+  isDateSelected = ms => {
+    const { selectedDate } = this.state;
+    return ms === selectedDate;
+  }
+
+  selectDate = ms => () => this.setState({
+    selectedDate: ms
+  });
+
   render() {
     const { days } = this.state;
     const settings = {
@@ -93,9 +107,13 @@ export class DatePick extends Component {
         <ScrollWrapper>
           <Slider {...settings} ref={slider => (this.slider = slider)}>
             {days.map(day => (
-              <div>
-                {day.day}
-              </div>
+              <DateItem
+                weekday={day.weekday}
+                day={day.day}
+                key={day.ms}
+                isSelected={this.isDateSelected(day.ms)}
+                selectDate={this.selectDate(day.ms)}
+              />
             ))}
           </Slider>
         </ScrollWrapper>
