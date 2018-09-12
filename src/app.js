@@ -5,6 +5,7 @@ import { hot } from 'react-hot-loader';
 import './ui/global-styles';
 import { Header } from './features/header';
 import { DatePick } from './features/date-pick';
+import { WeatherList } from './features/weather-list';
 
 const Grid = styled.div`
   display: flex;
@@ -19,6 +20,7 @@ const App = () => (
   <Grid>
     <Header />
     <DatePick />
+    <WeatherList />
   </Grid>
 );
 
